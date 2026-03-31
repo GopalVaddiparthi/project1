@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Gaming Store</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0, 137, 250);
+}
+
+/* GRID */
+.container{
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "header header"
+        "sale sale"
+        "sidebar main"
+        "footer footer";
+    gap: 10px;
+    padding: 10px;
+}
+
+/* SECTIONS */
+.header{
+    grid-area: header;
+    background-color: rgb(64, 0, 255); /* FIXED */
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.sale{
+    grid-area: sale;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    background-color: white;
+    padding: 10px;
+}
+
+.main{
+    grid-area: main;
+    background-color: white;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.footer{
+    grid-area: footer;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* PRODUCT */
+.product{
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.product-image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* BUTTON */
+.button{
+    background-color: white;
+    color: blue;
+    border: 2px solid blue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: blue;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>The Gaming Paradise</h1>
+</div>
+
+<div class="sale">
+<p>🔥 BIG SALE 46% OFF 🔥</p>
+</div>
+
+<div class="sidebar">
+<h2>Store</h2>
+<ul>
+<li>Forza Horizon 5</li>
+<li>John Wick</li>
+<li>Resident Evil 9</li>
+<li>Black Myth Wukong</li>
+</ul>
+</div>
+
+<div class="main">
+
+<div class="product">
+<img class="product-image" src="https://via.placeholder.com/150">
+<h3>Forza Horizon 5</h3>
+<p>Price: $50</p>
+<button class="button">Add to Cart</button>
+</div>
+
+<div class="product">
+<img class="product-image" src="https://via.placeholder.com/150">
+<h3>John Wick</h3>
+<p>Price: $90</p>
+<button class="button">Add to Cart</button>
+</div>
+
+<div class="product">
+<img class="product-image" src="https://via.placeholder.com/150">
+<h3>Resident Evil 9</h3>
+<p>Price: $120</p>
+<button class="button">Add to Cart</button>
+</div>
+
+<div class="product">
+<img class="product-image" src="https://via.placeholder.com/150">
+<h3>Black Myth Wukong</h3>
+<p>Price: $150</p>
+<button class="button">Add to Cart</button>
+</div>
+
+</div>
+
+<div class="footer">
+<p>@2026 My Gaming Store. All rights reserved.</p>
+</div>
+
+</div>
+
+</body>
+</html>>

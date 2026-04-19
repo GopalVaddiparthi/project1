@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Executor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            text-align: center;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px dashed #4CAF50;
+            border-radius: 5px;
+            min-height: 50px;
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Program Executor</h1>
+
+    <div class="container">
+        <h2>Select a Program</h2>
+
+        <!-- Buttons for Programs -->
+        <button onclick="program1()">Program 1: Addition</button>
+        <button onclick="program2()">Program 2: Factorial</button>
+        <button onclick="program3()">Program 3: Prime Check</button>
+        <button onclick="program4()">Program 4: Reverse String</button>
+        <button onclick="program5()">Program 5: Fibonacci Series</button>
+
+        <!-- Output Display -->
+        <div id="output">Output will be displayed here...</div>
+    </div>
+
+    <script>
+        // Function to display output
+        function displayOutput(message) {
+            document.getElementById("output").innerHTML = message;
+        }
+
+        // Program 1: Addition of two numbers
+        function program1() {
+            let a = parseFloat(prompt("Enter first number:"));
+            let b = parseFloat(prompt("Enter second number:"));
+            if (isNaN(a) || isNaN(b)) {
+                displayOutput("Please enter valid numbers.");
+                return;
+            }
+            displayOutput(`Sum of ${a} and ${b} is <strong>${a + b}</strong>`);
+        }
+
+        // Program 2: Factorial of a number
+        function program2() {
+            let n = parseInt(prompt("Enter a non-negative integer:"));
+            if (isNaN(n) || n < 0) {
+                displayOutput("Please enter a valid non-negative integer.");
+                return;
+            }
+            let fact = 1;
+            for (let i = 1; i <= n; i++) {
+                fact *= i;
+            }
+            displayOutput(`Factorial of ${n} is <strong>${fact}</strong>`);
+        }
+
+        // Program 3: Prime Number Check
+        function program3() {
+            let n = parseInt(prompt("Enter a number:"));
+            if (isNaN(n) || n <= 1) {
+                displayOutput(`${n} is not a prime number.`);
+                return;
+            }
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            displayOutput(
+                isPrime
+                    ? `${n} is a <strong>Prime Number</strong>.`
+                    : `${n} is <strong>Not a Prime Number</strong>.`
+            );
+        }
+
+        // Program 4: Reverse a String
+        function program4() {
+            let str = prompt("Enter a string:");
+            if (!str) {
+                displayOutput("Please enter a valid string.");
+                return;
+            }
+            let reversed = str.split('').reverse().join('');
+            displayOutput(`Reversed string: <strong>${reversed}</strong>`);
+        }
+
+        // Program 5: Fibonacci Series
+        function program5() {
+            let n = parseInt(prompt("Enter the number of terms:"));
+            if (isNaN(n) || n <= 0) {
+                displayOutput("Please enter a valid positive integer.");
+                return;
+            }
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            displayOutput(`Fibonacci series (${n} terms): <strong>${fib.slice(0, n).join(', ')}</strong>`);
+        }
+    </script>
+
+</body>
+</html>

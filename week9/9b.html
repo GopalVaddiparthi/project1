@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Programs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        button {
+            background-color: #2193b0;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            margin: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #17627a;
+            transform: scale(1.05);
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f4f4f4;
+            min-height: 40px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Number Checker Programs</h1>
+        
+        <!-- Input Field -->
+        <input type="number" id="numberInput" placeholder="Enter a number">
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button onclick="checkEven()">Even</button>
+            <button onclick="checkOdd()">Odd</button>
+            <button onclick="checkPrime()">Prime</button>
+            <button onclick="calculateFactorial()">Factorial</button>
+            <button onclick="checkArmstrong()">Armstrong</button>
+        </div>
+
+        <!-- Output Display -->
+        <div id="output">Result will be displayed here.</div>
+    </div>
+
+    <script>
+        // Function to get the input number
+        function getInputNumber() {
+            const num = parseInt(document.getElementById("numberInput").value);
+            if (isNaN(num)) {
+                displayOutput("Please enter a valid number.");
+                return null;
+            }
+            return num;
+        }
+
+        // Function to display output
+        function displayOutput(message) {
+            document.getElementById("output").innerHTML = message;
+        }
+
+        // Even Number Check
+        function checkEven() {
+            const num = getInputNumber();
+            if (num === null) return;
+
+            if (num % 2 === 0)
+                displayOutput(`${num} is an <strong>Even</strong> number.`);
+            else
+                displayOutput(`${num} is <strong>Not an Even</strong> number.`);
+        }
+
+        // Odd Number Check
+        function checkOdd() {
+            const num = getInputNumber();
+            if (num === null) return;
+
+            if (num % 2 !== 0)
+                displayOutput(`${num} is an <strong>Odd</strong> number.`);
+            else
+                displayOutput(`${num} is <strong>Not an Odd</strong> number.`);
+        }
+
+        // Prime Number Check
+        function checkPrime() {
+            const num = getInputNumber();
+            if (num === null) return;
+
+            if (num <= 1) {
+                displayOutput(`${num} is <strong>Not a Prime</strong> number.`);
+                return;
+            }
+
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            displayOutput(
+                isPrime
+                    ? `${num} is a <strong>Prime</strong> number.`
+                    : `${num} is <strong>Not a Prime</strong> number.`
+            );
+        }
+
+        // Factorial Calculation
+        function calculateFactorial() {
+            const num = getInputNumber();
+            if (num === null) return;
+
+            if (num < 0) {
+                displayOutput("Factorial is not defined for negative numbers.");
+                return;
+            }
+
+            let fact = 1;
+            for (let i = 1; i <= num; i++) {
+                fact *= i;
+            }
+
+            displayOutput(`Factorial of ${num} is <strong>${fact}</strong>.`);
+        }
+
+        // Armstrong Number Check
+        function checkArmstrong() {
+            const num = getInputNumber();
+            if (num === null) return;
+
+            const digits = num.toString().split('');
+            const power = digits.length;
+
+            let sum = 0;
+            for (let digit of digits) {
+                sum += Math.pow(parseInt(digit), power);
+            }
+
+            if (sum === num)
+                displayOutput(`${num} is an <strong>Armstrong</strong> number.`);
+            else
+                displayOutput(`${num} is <strong>Not an Armstrong</strong> number.`);
+        }
+    </script>
+
+</body>
+</html>
